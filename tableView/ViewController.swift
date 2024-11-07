@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,7 +23,5 @@ class ViewController: UIViewController {
         surnameLabel.text = person.surname
         imageView.image = UIImage(named: person.imagename)
     }
-
-
 }
 

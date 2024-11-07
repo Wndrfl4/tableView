@@ -49,10 +49,9 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row % 2 == 0{
+        // Чётная строка - используем "Cell1"
+        if indexPath.row % 2 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath)
-            
-            // Configure the cell...
             
             let label = cell.viewWithTag(1001) as! UILabel
             label.text = arrayPersons[indexPath.row].name
@@ -63,22 +62,24 @@ class TableViewController: UITableViewController {
             let imageView = cell.viewWithTag(1003) as! UIImageView
             imageView.image = UIImage(named: arrayPersons[indexPath.row].imagename)
 
+            return cell
+        } else {
+            // Нечётная строка - используем "Cell2"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath)
+            
+            let label = cell.viewWithTag(1001) as! UILabel
+            label.text = arrayPersons[indexPath.row].name
+            
+            let labelSurname = cell.viewWithTag(1002) as! UILabel
+            labelSurname.text = arrayPersons[indexPath.row].surname
+
+            let imageView = cell.viewWithTag(1003) as! UIImageView
+            imageView.image = UIImage(named: arrayPersons[indexPath.row].imagename)
+
+            return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath)
-        
-        // Configure the cell...
-        
-        let label = cell.viewWithTag(1001) as! UILabel
-        label.text = arrayPersons[indexPath.row].name
-        
-        let labelSurname = cell.viewWithTag(1002) as! UILabel
-        labelSurname.text = arrayPersons[indexPath.row].surname
-
-        let imageView = cell.viewWithTag(1003) as! UIImageView
-        imageView.image = UIImage(named: arrayPersons[indexPath.row].imagename)
-
-        return cell
     }
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
     }
